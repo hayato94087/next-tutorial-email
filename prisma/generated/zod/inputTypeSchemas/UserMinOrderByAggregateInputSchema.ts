@@ -7,7 +7,6 @@ export const UserMinOrderByAggregateInputSchema: z.ZodType<Prisma.UserMinOrderBy
   id: z.lazy(() => SortOrderSchema).optional(),
   email: z.lazy(() => SortOrderSchema).optional(),
   name: z.lazy(() => SortOrderSchema).optional(),
-  password: z.lazy(() => SortOrderSchema).optional(),
   role: z.lazy(() => SortOrderSchema).optional()
 }).strict() as z.ZodType<Prisma.UserMinOrderByAggregateInput>;
 

@@ -25,7 +25,6 @@ export const UserWhereUniqueInputSchema: z.ZodType<Prisma.UserWhereUniqueInput> 
   OR: z.lazy(() => UserWhereInputSchema).array().optional(),
   NOT: z.union([ z.lazy(() => UserWhereInputSchema),z.lazy(() => UserWhereInputSchema).array() ]).optional(),
   name: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  password: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
   role: z.union([ z.lazy(() => EnumRoleFilterSchema),z.lazy(() => RoleSchema) ]).optional(),
 }).strict()) as z.ZodType<Prisma.UserWhereUniqueInput>;
 
