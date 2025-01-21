@@ -21,20 +21,10 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  name     String?
-  password String?
-  role     Role    @default(USER)
-}
-
-model Todo {
-  id        Int      @id @default(autoincrement())
-  /// @zod.string.max(10, { message: "タイトルは10文字以内で入力してください" })
-  title     String
-  completed Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  role  Role    @default(USER)
 }
 
 enum Role {

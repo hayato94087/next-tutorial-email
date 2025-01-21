@@ -4,10 +4,6 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     /**
-     * T3 Env テスト用のURL
-     */
-    DEBUG_URL: z.string().url(),
-    /**
      * 環境
      */
     NODE_ENV: z
@@ -33,7 +29,6 @@ export const env = createEnv({
     NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string(),
   },
   runtimeEnv: {
-    DEBUG_URL: process.env.DEBUG_URL,
     NODE_ENV: process.env.NODE_ENV,
     DATABASE_URL: process.env.DATABASE_URL,
     DIRECT_URL: process.env.DIRECT_URL,

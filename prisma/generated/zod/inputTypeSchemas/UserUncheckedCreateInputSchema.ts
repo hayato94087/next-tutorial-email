@@ -7,7 +7,6 @@ export const UserUncheckedCreateInputSchema: z.ZodType<Prisma.UserUncheckedCreat
   id: z.number().int().optional(),
   email: z.string(),
   name: z.string().optional().nullable(),
-  password: z.string().optional().nullable(),
   role: z.lazy(() => RoleSchema).optional()
 }).strict() as z.ZodType<Prisma.UserUncheckedCreateInput>;
 

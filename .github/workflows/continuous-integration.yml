@@ -35,7 +35,6 @@ jobs:
           pnpm-version: ${{ env.PNPM_VERSION }}
       - run: pnpm run lint
         env:
-          DEBUG_URL: ${{ secrets.TEST_DEBUG_URL }}
           DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
           DIRECT_URL: ${{ secrets.TEST_DIRECT_URL }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.TEST_NEXT_PUBLIC_SUPABASE_URL }}
