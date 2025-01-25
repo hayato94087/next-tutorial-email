@@ -69,6 +69,7 @@ const eslintConfig = [
       "next.config.ts",
       "postcss.config.mjs",
       "tailwind.config.ts",
+      "src/emails/**.tsx",
     ],
     rules: {
       "import/no-default-export": "off",
