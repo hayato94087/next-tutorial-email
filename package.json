@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint && prisma validate",
@@ -18,13 +18,15 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:seed": "prisma db seed",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "email:dev": "email dev -d ./src/emails -p 3001"
   },
   "prisma": {
     "seed": "pnpm vite-node prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
+    "@react-email/components": "0.0.32",
     "@t3-oss/env-nextjs": "^0.11.1",
     "next": "15.1.2",
     "prisma": "^6.1.0",
@@ -51,6 +53,7 @@
     "postcss": "^8",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "react-email": "3.0.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "vite-node": "^2.1.8"
