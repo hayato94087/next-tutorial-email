@@ -17,6 +17,10 @@ export const env = createEnv({
      * Prisma CLI がデータベースの操作をするためのデータベース接続先
      */
     DIRECT_URL: z.string().url(),
+    /**
+     * Resend API キー
+     */
+    RESEND_API_KEY: z.string(),
   },
   client: {
     /**
@@ -32,6 +36,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     DATABASE_URL: process.env.DATABASE_URL,
     DIRECT_URL: process.env.DIRECT_URL,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
