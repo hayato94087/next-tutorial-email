@@ -51,6 +51,7 @@ jobs:
           DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
           DIRECT_URL: ${{ secrets.PROD_DIRECT_URL }}
           RESEND_API_KEY: ${{ secrets.PROD_RESEND_API_KEY }}
+          RESEND_DOMAIN: ${{ secrets.PROD_RESEND_DOMAIN }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.PROD_NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY:
             ${{ secrets.PROD_NEXT_PUBLIC_SUPABASE_ANON_KEY }}

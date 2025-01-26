@@ -21,6 +21,10 @@ export const env = createEnv({
      * Resend API キー
      */
     RESEND_API_KEY: z.string(),
+    /**
+     * Resend で利用するドメイン
+     */
+    RESEND_DOMAIN: z.string(),
   },
   client: {
     /**
@@ -37,6 +41,7 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     DIRECT_URL: process.env.DIRECT_URL,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
+    RESEND_DOMAIN: process.env.RESEND_DOMAIN,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
