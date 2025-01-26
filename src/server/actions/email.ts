@@ -2,9 +2,7 @@
 
 import EmailTemplate from "@/emails/welcome-email";
 import { env } from "@/env";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { resend } from "@/lib/resend";
 
 type SendEmailResponse = {
   data: { id: string } | null;
@@ -22,6 +20,8 @@ export async function sendWelcomeEmail({
   to,
   username,
 }: SendEmailParams): Promise<SendEmailResponse> {
+  console.log("RESEND_API_KEY", env.RESEND_API_KEY);
+  console.log("RESEND_DOMAIN", env.RESEND_DOMAIN);
   // 件名
   const subject = "アカウントの作成が完了しました";
   // 本文
