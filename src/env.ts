@@ -24,7 +24,9 @@ export const env = createEnv({
     /**
      * Resend で利用するドメイン
      */
-    RESEND_DOMAIN: z.string(),
+    RESEND_DOMAIN: z.string().min(1, {
+      message: "RESEND_DOMAINは必須です",
+    }),
   },
   client: {
     /**
