@@ -1,4 +1,4 @@
-"use server";
+import "server-only";
 
 // import EmailTemplate from "@/emails/welcome-email";
 // import { env } from "@/env";
