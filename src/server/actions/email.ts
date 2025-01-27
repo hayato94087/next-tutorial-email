@@ -21,34 +21,29 @@ export async function sendWelcomeEmail({
   to,
   username,
 }: SendEmailParams): Promise<SendEmailResponse> {
-  console.log("Server Actions");
-  console.log("RESEND_API_KEY", env.RESEND_API_KEY);
-  console.log("RESEND_DOMAIN", env.RESEND_DOMAIN);
+  // 件名
+  const subject = "アカウントの作成が完了しました";
+  // 本文
+  const react = EmailTemplate({ username });
 
-  return { data: null, error: null };
-  // // 件名
-  // const subject = "アカウントの作成が完了しました";
-  // // 本文
-  // const react = EmailTemplate({ username });
+  try {
+    const { data, error } = await resend.emails.send({
+      from,
+      to,
+      subject,
+      react,
+    });
 
-  // try {
-  //   const { data, error } = await resend.emails.send({
-  //     from,
-  //     to,
-  //     subject,
-  //     react,
-  //   });
+    if (error) {
+      return { data: null, error };
+    }
 
-  //   if (error) {
-  //     return { data: null, error };
-  //   }
-
-  //   return { data, error: null };
-  // } catch (error) {
-  //   return {
-  //     data: null,
-  //     error:
-  //       error instanceof Error ? error : new Error("Unknown error occurred"),
-  //   };
-  // }
+    return { data, error: null };
+  } catch (error) {
+    return {
+      data: null,
+      error:
+        error instanceof Error ? error : new Error("Unknown error occurred"),
+    };
+  }
 }
