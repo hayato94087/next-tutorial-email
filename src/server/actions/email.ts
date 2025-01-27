@@ -59,6 +59,8 @@ export async function sendWelcomeEmail({
   to,
   username,
 }: SendEmailParams): Promise<SendEmailResponse> {
+  console.log("DATABASE_URL", process.env.DATABASE_URL);
+  console.log("DIRECT_URL", process.env.DIRECT_URL);
   console.log("RESEND_DOMAIN", process.env.RESEND_DOMAIN);
   console.log("NODE_ENV", process.env.NODE_ENV);
   console.log("NEXT_PUBLIC_SUPABASE_URL", process.env.NEXT_PUBLIC_SUPABASE_URL);
