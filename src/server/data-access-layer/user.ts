@@ -1,4 +1,4 @@
-import "server-only";
+import "server-only"; //このモジュールがクライアントサイドでインポートされるのを防ぐ
 
 import type { User } from "@prisma/client";
 import { db } from "@/server/db";

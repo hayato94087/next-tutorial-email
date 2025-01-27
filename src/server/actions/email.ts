@@ -1,4 +1,4 @@
-import "server-only";
+"use server"; // このファイル全体をServer Actionsとして定義
 
 // import EmailTemplate from "@/emails/welcome-email";
 // import { env } from "@/env";
