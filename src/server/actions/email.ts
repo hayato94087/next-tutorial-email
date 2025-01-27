@@ -17,7 +17,8 @@ type SendEmailParams = {
 };
 
 export async function sendWelcomeEmail({
-  from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
+  // from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
+  from = `Acme <onboarding@`,
   to,
   username,
 }: SendEmailParams): Promise<SendEmailResponse> {
