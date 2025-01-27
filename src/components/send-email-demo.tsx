@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { sendWelcomeEmail } from "@/server/actions/email";
+
+// import { sendWelcomeEmail } from "@/server/actions/email";
 
 export function SendEmailDemo() {
   const [to, setTo] = useState("");
@@ -10,10 +11,10 @@ export function SendEmailDemo() {
   return (
     <form
       action={async () => {
-        await sendWelcomeEmail({
-          to,
-          username,
-        });
+        // await sendWelcomeEmail({
+        //   to,
+        //   username,
+        // });
       }}
       className="space-y-4"
     >
