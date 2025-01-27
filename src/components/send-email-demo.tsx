@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { sendWelcomeEmail } from "@/server/actions/email";
+import { hello } from "@/server/actions/email";
 
 export function SendEmailDemo() {
   const [to, setTo] = useState("");
@@ -27,10 +27,11 @@ export function SendEmailDemo() {
       </div>
       <button
         onClick={async () => {
-          await sendWelcomeEmail({
-            to,
-            username,
-          });
+          // await sendWelcomeEmail({
+          //   to,
+          //   username,
+          // });
+          await hello();
         }}
         className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
         disabled={!to || !username}
