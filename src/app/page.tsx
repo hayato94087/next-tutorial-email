@@ -10,7 +10,7 @@ export default async function Home() {
     <main>
       <div className="flex h-screen items-center justify-center">
         <div className="flex flex-col items-center">
-          <SendEmailDemo />
+          {/* <SendEmailDemo /> */}
           {env.RESEND_DOMAIN}
         </div>
       </div>
