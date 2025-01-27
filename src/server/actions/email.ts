@@ -17,14 +17,13 @@ type SendEmailParams = {
 };
 
 export async function sendWelcomeEmail({
-  // from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
-  from = `Acme <onboarding@`,
+  from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
   to,
   username,
 }: SendEmailParams): Promise<SendEmailResponse> {
   console.log("Server Actions");
-  // console.log("RESEND_API_KEY", env.RESEND_API_KEY);
-  // console.log("RESEND_DOMAIN", env.RESEND_DOMAIN);
+  console.log("RESEND_API_KEY", env.RESEND_API_KEY);
+  console.log("RESEND_DOMAIN", env.RESEND_DOMAIN);
 
   return { data: null, error: null };
   // // 件名
