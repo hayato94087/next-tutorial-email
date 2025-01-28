@@ -62,7 +62,7 @@ jobs:
           echo "${{ secrets.TEST_DATABASE_URL }}" | vercel env add DATABASE_URL preview --token=${{ secrets.VERCEL_TOKEN }}
           echo "${{ secrets.TEST_DIRECT_URL }}" | vercel env add DIRECT_URL preview --token=${{ secrets.VERCEL_TOKEN }}
           echo "${{ secrets.TEST_RESEND_API_KEY }}" | vercel env add RESEND_API_KEY preview --token=${{ secrets.VERCEL_TOKEN }}
-          echo "${{ secrets.TEST_RESEMD_DOMAIN }}" | vercel env add RESEMD_DOMAIN preview --token=${{ secrets.VERCEL_TOKEN }}
+          echo "${{ secrets.TEST_RESEND_DOMAIN }}" | vercel env add RESEND_DOMAIN preview --token=${{ secrets.VERCEL_TOKEN }}
           echo "${{ secrets.TEST_NEXT_PUBLIC_SUPABASE_URL }}" | vercel env add NEXT_PUBLIC_SUPABASE_URL preview --token=${{ secrets.VERCEL_TOKEN }}
           echo "${{ secrets.TEST_NEXT_PUBLIC_SUPABASE_ANON_KEY }}" | vercel env add NEXT_PUBLIC_SUPABASE_ANON_KEY preview --token=${{ secrets.VERCEL_TOKEN }}
         env:
