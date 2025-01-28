@@ -1,6 +1,9 @@
 "use server";
 
 // このファイル全体をServer Actionsとして定義
+import fs from "fs";
+import path from "path";
+import { cwd } from "process";
 import EmailTemplate from "@/emails/welcome-email";
 import { env } from "@/env";
 import { resend } from "@/lib/resend";
@@ -68,6 +71,81 @@ export async function sendScheduledEmail({
       subject,
       react,
       scheduledAt: fiveinuteFromNow,
+    });
+
+    if (error) {
+      return { data: null, error };
+    }
+
+    return { data, error: null };
+  } catch (error) {
+    return {
+      data: null,
+      error:
+        error instanceof Error ? error : new Error("Unknown error occurred"),
+    };
+  }
+}
+
+export async function sendScheduledEmailWithAttachedRemoteFile({
+  from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
+  to,
+  username,
+}: SendEmailParams): Promise<SendEmailResponse> {
+  // 件名
+  const subject = "Receipt for your payment";
+
+  try {
+    const { data, error } = await resend.emails.send({
+      from,
+      to,
+      subject,
+      html: `<p>To ${username}, Thanks for the payment.</p>`,
+      attachments: [
+        {
+          path: "https://resend.com/static/sample/invoice.pdf",
+          filename: "invoice.pdf",
+        },
+      ],
+    });
+
+    if (error) {
+      return { data: null, error };
+    }
+
+    return { data, error: null };
+  } catch (error) {
+    return {
+      data: null,
+      error:
+        error instanceof Error ? error : new Error("Unknown error occurred"),
+    };
+  }
+}
+
+export async function sendScheduledEmailWithAttachedLocalFile({
+  from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
+  to,
+  username,
+}: SendEmailParams): Promise<SendEmailResponse> {
+  // 件名
+  const subject = "Receipt for your payment";
+
+  const filepath = path.join(cwd(), "public", "invoice.pdf");
+  const attachment = fs.readFileSync(filepath).toString("base64");
+
+  try {
+    const { data, error } = await resend.emails.send({
+      from,
+      to,
+      subject,
+      html: `<p>To ${username}, Thanks for the payment.</p>`,
+      attachments: [
+        {
+          content: attachment,
+          filename: "invoice.pdf",
+        },
+      ],
     });
 
     if (error) {
