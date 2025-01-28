@@ -47,3 +47,39 @@ export async function sendWelcomeEmail({
     };
   }
 }
+
+export async function sendScheduledEmail({
+  from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
+  to,
+  username,
+}: SendEmailParams): Promise<SendEmailResponse> {
+  // 件名
+  const subject = "アカウントの作成が完了しました";
+  // 本文
+  const react = EmailTemplate({ username });
+
+  // 5分後に送信
+  const fiveinuteFromNow = new Date(Date.now() + 1000 * 60 * 5).toISOString();
+
+  try {
+    const { data, error } = await resend.emails.send({
+      from,
+      to,
+      subject,
+      react,
+      scheduledAt: fiveinuteFromNow,
+    });
+
+    if (error) {
+      return { data: null, error };
+    }
+
+    return { data, error: null };
+  } catch (error) {
+    return {
+      data: null,
+      error:
+        error instanceof Error ? error : new Error("Unknown error occurred"),
+    };
+  }
+}
