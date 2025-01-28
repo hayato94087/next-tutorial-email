@@ -2,7 +2,7 @@ name: Vercel preview Deployment
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
 
 env:
