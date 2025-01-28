@@ -8,7 +8,15 @@ export function SendEmailDemo() {
   const [username, setUsername] = useState("");
 
   return (
-    <div className="space-y-4">
+    <form
+      action={async () => {
+        await sendWelcomeEmail({
+          to,
+          username,
+        });
+      }}
+      className="space-y-4"
+    >
       <div className="flex flex-col gap-2">
         <input
           type="email"
@@ -26,17 +34,12 @@ export function SendEmailDemo() {
         />
       </div>
       <button
-        onClick={async () => {
-          await sendWelcomeEmail({
-            to,
-            username,
-          });
-        }}
+        type="submit"
         className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
         disabled={!to || !username}
       >
         メールを送信
       </button>
-    </div>
+    </form>
   );
 }

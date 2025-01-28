@@ -1,10 +1,9 @@
 "use server";
 
+// このファイル全体をServer Actionsとして定義
 import EmailTemplate from "@/emails/welcome-email";
 import { env } from "@/env";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { resend } from "@/lib/resend";
 
 type SendEmailResponse = {
   data: { id: string } | null;
