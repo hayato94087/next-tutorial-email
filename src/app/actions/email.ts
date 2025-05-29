@@ -17,6 +17,49 @@ interface SendEmailResponse {
   error: Error | undefined;
 }
 
+export async function sendScheduledEmail({
+  from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
+  to,
+  username,
+}: SendEmailParams): Promise<SendEmailResponse> {
+  // 件名
+  const subject = "アカウントの作成が完了しました";
+  // 本文
+  const react = EmailTemplate({ username });
+
+  // 5分後に送信
+  const fiveinuteFromNow = new Date(Date.now() + 1000 * 60 * 5).toISOString();
+
+  try {
+    const { data, error } = await resend.emails.send({
+      from,
+      react,
+      scheduledAt: fiveinuteFromNow,
+      subject,
+      to,
+    });
+
+    if (error) {
+      return { data: undefined, error };
+    }
+
+    if (!data) {
+      return {
+        data: undefined,
+        error: new Error("メール送信予約に失敗しました"),
+      };
+    }
+
+    return { data, error: undefined };
+  } catch (error) {
+    return {
+      data: undefined,
+      error:
+        error instanceof Error ? error : new Error("Unknown error occurred"),
+    };
+  }
+}
+
 export async function sendWelcomeEmail({
   from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
   to,
