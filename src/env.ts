@@ -10,6 +10,7 @@ export const env = createEnv({
     DEBUG_MESSAGE: process.env.DEBUG_MESSAGE,
     NODE_ENV: process.env.NODE_ENV,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
+    RESEND_DOMAIN: process.env.RESEND_DOMAIN,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   server: {
@@ -27,6 +28,10 @@ export const env = createEnv({
      * Resend API キー
      */
     RESEND_API_KEY: z.string(),
+    /**
+     * Resend で利用するドメイン
+     */
+    RESEND_DOMAIN: z.string(),
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });

@@ -34,6 +34,7 @@ jobs:
         env:
           DEBUG_MESSAGE: ${{ secrets.PREVIEW_DEBUG_MESSAGE }}
           RESEND_API_KEY: ${{ secrets.PREVIEW_RESEND_API_KEY }}
+          RESEND_DOMAIN: ${{ secrets.PREVIEW_RESEND_DOMAIN }}
 
   format:
     needs: setup
