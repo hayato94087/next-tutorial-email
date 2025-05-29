@@ -9,6 +9,7 @@ export const env = createEnv({
   runtimeEnv: {
     DEBUG_MESSAGE: process.env.DEBUG_MESSAGE,
     NODE_ENV: process.env.NODE_ENV,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   server: {
@@ -22,6 +23,10 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    /**
+     * Resend API キー
+     */
+    RESEND_API_KEY: z.string(),
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });
