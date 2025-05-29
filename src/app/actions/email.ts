@@ -17,6 +17,48 @@ interface SendEmailResponse {
   error: Error | undefined;
 }
 
+export async function sendEmailWithRemoteFile({
+  from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
+  to,
+  username,
+}: SendEmailParams): Promise<SendEmailResponse> {
+  // 件名
+  const subject = "Receipt for your payment";
+
+  try {
+    const { data, error } = await resend.emails.send({
+      attachments: [
+        {
+          filename: "invoice.pdf",
+          path: "https://resend.com/static/sample/invoice.pdf",
+        },
+      ],
+      from,
+      html: `<p>To ${username}, Thanks for the payment.</p>`,
+      subject,
+      to,
+    });
+
+    if (error) {
+      return { data: undefined, error };
+    }
+
+    if (!data) {
+      return {
+        data: undefined,
+        error: new Error("メール送信に失敗しました"),
+      };
+    }
+    return { data, error: undefined };
+  } catch (error) {
+    return {
+      data: undefined,
+      error:
+        error instanceof Error ? error : new Error("Unknown error occurred"),
+    };
+  }
+}
+
 export async function sendScheduledEmail({
   from = `Acme <onboarding@${env.RESEND_DOMAIN}>`,
   to,
